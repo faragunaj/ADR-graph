@@ -24,15 +24,16 @@ ep.to_predict = 'HAS_SIDE_EFFECT'
 ep.network_order = ['HAS_SIDE_EFFECT', 'DRUG_TARGETS', 'INDICATED_FOR']
 
 #train the model
-target_name = "C0027849"
-result = ep.predict(target = target_name, calculate_auc = True)
+# target_name = "C0027849"
+result = ep.predictAll(calculate_auc = True)
 
 #predicted (unknown) causes of the target ADR
 new_predictions = result['new_hits']
+# print(new_predictions)
 
 #the optimised weights from the model
 weights = result['weights']
 
 #the score for all drugs using the trained model
 scores = ep.getScores(target_name, weights)
-
+# print(scores)
